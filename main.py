@@ -37,6 +37,7 @@ bot = telebot.TeleBot(config.bot_token)
 a = requests.get(
     "https://newsapi.org/v2/top-headlines?apiKey=589f962b1856423b9c7467a2a6497704&country=ru&category=sports&pageSize=5")
 
+server.createTeables()
 server.fillCateg(arrCateg)
 
 i = 0

@@ -4,24 +4,25 @@ import sqlite3
 connect = sqlite3.connect('subsc.db', check_same_thread=False)
 cursor = connect.cursor()
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS "users" (
-	"id"	INTEGER NOT NULL	
-);""")
-connect.commit()
+def createTeables():
+    cursor.execute("""CREATE TABLE IF NOT EXISTS "users" (
+        "id"	INTEGER NOT NULL	
+    );""")
+    connect.commit()
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS "subscribes" (
-	"user_id"	INTEGER NOT NULL,
-	"category_id"	INTEGER NOT NULL,
-	PRIMARY KEY("user_id","category_id")
-);""")
-connect.commit()
+    cursor.execute("""CREATE TABLE IF NOT EXISTS "subscribes" (
+        "user_id"	INTEGER NOT NULL,
+        "category_id"	INTEGER NOT NULL,
+        PRIMARY KEY("user_id","category_id")
+    );""")
+    connect.commit()
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS "categories" (
-	"id"	INTEGER NOT NULL,
-	"name"	INTEGER NOT NULL UNIQUE,
-	PRIMARY KEY("id" AUTOINCREMENT)
-);""")
-connect.commit()
+    cursor.execute("""CREATE TABLE IF NOT EXISTS "categories" (
+        "id"	INTEGER NOT NULL,
+        "name"	INTEGER NOT NULL UNIQUE,
+        PRIMARY KEY("id" AUTOINCREMENT)
+    );""")
+    connect.commit()
 
 
 def fillCateg(arrCateg):
